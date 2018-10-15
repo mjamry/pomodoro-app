@@ -17,17 +17,31 @@ class Clock extends React.Component {
   }
 
   componentDidMount() {
+    this.startTimer();
+  }
+
+  componentWillUnmount() {
+    this.stopTimer();
+  }
+
+  componentWillReceiveProps({ timerIntervalInMinutes }) {
+    this.setState({
+      timerTicksLeft: timerIntervalInMinutes * ClockConsts.secInMinute
+    });
+
+    this.startTimer();
+  }
+
+  startTimer() {
     this.timerId = setInterval(
       () => this.onTick(),
       ClockConsts.timerTickIntervalInMs
     );
+
+    this.onTick();
   }
 
-  componentWillUnmount() {
-    this.clearInterval();
-  }
-
-  clearInterval() {
+  stopTimer() {
     clearInterval(this.timerId);
   }
 
@@ -45,7 +59,7 @@ class Clock extends React.Component {
         timerValue: this.formatClock(this.state.timerTicksLeft)
       });
     } else {
-      this.clearInterval();
+      this.stopTimer();
       this.props.onFinished();
     }
   }

@@ -3,6 +3,13 @@ import ReactDOM from "react-dom";
 
 import Clock from "./components/Clock.js";
 
+const AppSettings = {
+  appName: "Pomodoro App",
+  taskTime: 0.5,
+  breakTime: 0.1,
+  longBreakTime: 0.2
+};
+
 const Header = props => {
   return <div>{props.name}</div>;
 };
@@ -12,25 +19,27 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      consts: {
-        appName: "Pomodoro App",
-        taskTime: 0.5,
-        breakTime: 5,
-        longBreakTime: 15
-      }
+      isDuringTask: true,
+      timerTime: AppSettings.taskTime
     };
   }
 
-  timerFinished() {
-    alert("Timer Finished!");
-  }
+  timerFinished = () => {
+    this.setState(state => ({
+      taskTime: state.isDuringTask
+        ? AppSettings.breakTime
+        : AppSettings.taskTime
+    }));
+    console.log(`${Date.now()} - ${this.state.isDuringTask}`);
+    console.log(this.state.taskTime);
+  };
 
   render() {
     return (
       <div>
-        <Header name={this.state.consts.appName} />
+        <Header name={AppSettings.appName} />
         <Clock
-          timerIntervalInMinutes={this.state.consts.taskTime}
+          timerIntervalInMinutes={this.state.taskTime}
           onFinished={this.timerFinished}
         />
       </div>
