@@ -26,6 +26,10 @@ class Clock extends React.Component {
   }
 
   componentWillUnmount() {
+    this.clearInterval();
+  }
+
+  clearInterval() {
     clearInterval(this.timerId);
   }
 
@@ -42,6 +46,9 @@ class Clock extends React.Component {
         timerTicksLeft: this.state.timerTicksLeft - 1,
         timerValue: this.formatClock(this.state.timerTicksLeft)
       });
+    } else {
+      this.clearInterval();
+      this.props.onFinished();
     }
   }
 

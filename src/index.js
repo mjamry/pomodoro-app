@@ -14,18 +14,25 @@ class App extends React.Component {
     this.state = {
       consts: {
         appName: "Pomodoro App",
-        taskTime: 20,
+        taskTime: 0.5,
         breakTime: 5,
         longBreakTime: 15
       }
     };
   }
 
+  timerFinished() {
+    alert("Timer Finished!");
+  }
+
   render() {
     return (
       <div>
         <Header name={this.state.consts.appName} />
-        <Clock timerIntervalInMinutes={this.state.consts.taskTime} />
+        <Clock
+          timerIntervalInMinutes={this.state.consts.taskTime}
+          onFinished={this.timerFinished}
+        />
       </div>
     );
   }
