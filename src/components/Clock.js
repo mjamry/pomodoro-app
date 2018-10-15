@@ -14,8 +14,6 @@ class Clock extends React.Component {
         this.props.timerIntervalInMinutes * ClockConsts.secInMinute,
       timerValue: ""
     };
-
-    this.setState({ timerValue: this.formatClock(this.state.timerTicksLeft) });
   }
 
   componentDidMount() {
