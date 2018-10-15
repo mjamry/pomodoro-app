@@ -1,15 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+import Clock from "./components/Clock.js";
+
 const Header = props => {
   return <div>{props.name}</div>;
 };
-
-class Clock extends React.Component {
-  render() {
-    return <div>20:00</div>;
-  }
-}
 
 class App extends React.Component {
   constructor(props) {
@@ -17,7 +13,10 @@ class App extends React.Component {
 
     this.state = {
       consts: {
-        appName: "Pomodoro App"
+        appName: "Pomodoro App",
+        taskTime: 20,
+        breakTime: 5,
+        longBreakTime: 15
       }
     };
   }
@@ -26,7 +25,7 @@ class App extends React.Component {
     return (
       <div>
         <Header name={this.state.consts.appName} />
-        <Clock />
+        <Clock timerIntervalInMinutes={this.state.consts.taskTime} />
       </div>
     );
   }
