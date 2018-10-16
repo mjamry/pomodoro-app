@@ -12,10 +12,10 @@ const ClockController = props => {
         />
       </div>
       <div className="row">
-        <div className="col bg-success justify-content-end">
+        <div className="col justify-content-end text-right">
           <button className="btn btn-primary">Pause</button>
         </div>
-        <div className="col bg-info justify-content-start">
+        <div className="col justify-content-start">
           <button className="btn btn-primary">Stop</button>
         </div>
       </div>
