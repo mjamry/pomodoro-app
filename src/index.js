@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import Clock from "./components/Clock.js";
+import ClockController from "./components/Timer.js";
 
 const AppSettings = {
   appName: "Pomodoro App",
-  taskTime: 0.5,
+  taskTime: 20,
   breakTime: 0.1,
   longBreakTime: 0.2
 };
@@ -13,11 +13,11 @@ const AppSettings = {
 const Header = props => {
   return (
     <div className="container">
-        <div className="row">
-            <div className="col">
-                <p className="text-center font-weight-bold">{props.name}</p>
-            </div>
+      <div className="row">
+        <div className="col">
+          <p className="text-center font-weight-bold">{props.name}</p>
         </div>
+      </div>
     </div>
   );
 };
@@ -45,7 +45,7 @@ class App extends React.Component {
     return (
       <div>
         <Header name={AppSettings.appName} />
-        <Clock
+        <ClockController
           timerIntervalInMinutes={this.state.taskTime}
           onFinished={this.timerFinished}
         />

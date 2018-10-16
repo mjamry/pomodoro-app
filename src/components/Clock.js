@@ -64,14 +64,16 @@ class Clock extends React.Component {
 
   render() {
     return (
-        <div className="container">
-            <div className="row">
-                <div className="col">
-                    <p className="text-center font-weight-bold aligh-middle">{this.state.timerValue}</p>
-                </div>
-            </div>
+      <div className="container">
+        <div className="row">
+          <div className="col">
+            <p className="text-center font-weight-bold aligh-middle">
+              {this.state.timerValue}
+            </p>
+          </div>
         </div>
-    )
+      </div>
+    );
   }
 }
 
