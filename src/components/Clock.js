@@ -37,8 +37,6 @@ class Clock extends React.Component {
       () => this.onTick(),
       ClockConsts.timerTickIntervalInMs
     );
-
-    this.onTick();
   }
 
   stopTimer() {

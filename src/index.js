@@ -28,10 +28,9 @@ class App extends React.Component {
     this.setState(state => ({
       taskTime: state.isDuringTask
         ? AppSettings.breakTime
-        : AppSettings.taskTime
+        : AppSettings.taskTime,
+      isDuringTask: !state.isDuringTask
     }));
-    console.log(`${Date.now()} - ${this.state.isDuringTask}`);
-    console.log(this.state.taskTime);
   };
 
   render() {
