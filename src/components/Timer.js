@@ -8,7 +8,6 @@ class Timer extends React.Component {
 
     this.state = {
       isRunning: true,
-      isPaused: false,
       timerTicksLeft: this.props.timerIntervalInMinutes * 60
     };
   }
@@ -16,6 +15,7 @@ class Timer extends React.Component {
   componentWillUpdate({ timerIntervalInMinutes }) {
     if (this.props.timerIntervalInMinutes !== timerIntervalInMinutes) {
       this.setState({ timerTicksLeft: timerIntervalInMinutes * 60 });
+      this.forceUpdate();
     }
   }
 
@@ -27,6 +27,17 @@ class Timer extends React.Component {
     } else {
       this.props.onFinished();
     }
+  }
+
+  pause() {
+    this.setState(state => ({ isRunning: !state.isRunning }));
+  }
+
+  stop() {
+    this.setState(state => ({
+      isRunning: !state.isRunning,
+      timerTicksLeft: 0
+    }));
   }
 
   render() {
@@ -43,10 +54,14 @@ class Timer extends React.Component {
         </div>
         <div className="row">
           <div className="col justify-content-end text-right">
-            <button className="btn btn-primary">Pause</button>
+            <button className="btn btn-primary" onClick={() => this.pause()}>
+              {this.state.isRunning ? "Pause" : "Start"}
+            </button>
           </div>
           <div className="col justify-content-start">
-            <button className="btn btn-primary">Stop</button>
+            <button className="btn btn-primary" onClick={() => this.stop()}>
+              Stop
+            </button>
           </div>
         </div>
       </div>
