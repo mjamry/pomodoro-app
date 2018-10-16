@@ -11,7 +11,15 @@ const AppSettings = {
 };
 
 const Header = props => {
-  return <div>{props.name}</div>;
+  return (
+    <div className="container">
+        <div className="row">
+            <div className="col">
+                <p className="text-center font-weight-bold">{props.name}</p>
+            </div>
+        </div>
+    </div>
+  );
 };
 
 class App extends React.Component {
