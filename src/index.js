@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import ClockController from "./components/Timer.js";
+import Timer from "./components/Timer.js";
 
 const AppSettings = {
   appName: "Pomodoro App",
-  taskTime: 20,
+  taskTime: 0.5,
   breakTime: 0.1,
   longBreakTime: 0.2
 };
@@ -34,7 +34,7 @@ class App extends React.Component {
 
   timerFinished = () => {
     this.setState(state => ({
-      taskTime: state.isDuringTask
+      timerTime: state.isDuringTask
         ? AppSettings.breakTime
         : AppSettings.taskTime,
       isDuringTask: !state.isDuringTask
@@ -45,8 +45,8 @@ class App extends React.Component {
     return (
       <div>
         <Header name={AppSettings.appName} />
-        <ClockController
-          timerIntervalInMinutes={this.state.taskTime}
+        <Timer
+          timerIntervalInMinutes={this.state.timerTime}
           onFinished={this.timerFinished}
         />
       </div>

@@ -6,15 +6,7 @@ const ClockConsts = {
 };
 
 class Clock extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      timerTicksLeft:
-        this.props.timerIntervalInMinutes * ClockConsts.secInMinute,
-      timerValue: ""
-    };
-  }
+  timerValue = "";
 
   componentDidMount() {
     this.startTimer();
@@ -24,17 +16,13 @@ class Clock extends React.Component {
     this.stopTimer();
   }
 
-  componentWillReceiveProps({ timerIntervalInMinutes }) {
-    this.setState({
-      timerTicksLeft: timerIntervalInMinutes * ClockConsts.secInMinute
-    });
-
-    this.startTimer();
+  componentWillUpdate() {
+    this.timerValue = this.formatClock(this.props.timerTicksLeft);
   }
 
   startTimer() {
     this.timerId = setInterval(
-      () => this.onTick(),
+      () => this.props.onTick(),
       ClockConsts.timerTickIntervalInMs
     );
   }
@@ -50,25 +38,13 @@ class Clock extends React.Component {
     return sec > 9 ? `${min}:${sec}` : `${min}:0${sec}`;
   }
 
-  onTick() {
-    if (this.state.timerTicksLeft >= 0) {
-      this.setState({
-        timerTicksLeft: this.state.timerTicksLeft - 1,
-        timerValue: this.formatClock(this.state.timerTicksLeft)
-      });
-    } else {
-      this.stopTimer();
-      this.props.onFinished();
-    }
-  }
-
   render() {
     return (
       <div className="container">
         <div className="row">
           <div className="col">
             <p className="text-center font-weight-bold aligh-middle">
-              {this.state.timerValue}
+              {this.timerValue}
             </p>
           </div>
         </div>
