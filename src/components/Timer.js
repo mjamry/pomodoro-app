@@ -15,15 +15,19 @@ class Timer extends React.Component {
   componentWillUpdate({ timerIntervalInMinutes }) {
     if (this.props.timerIntervalInMinutes !== timerIntervalInMinutes) {
       this.setState({ timerTicksLeft: timerIntervalInMinutes * 60 });
-      this.forceUpdate();
     }
   }
 
   onTick() {
     if (this.state.timerTicksLeft > 0) {
-      this.setState({
-        timerTicksLeft: this.state.timerTicksLeft - 1
-      });
+      this.setState(
+        {
+          timerTicksLeft: this.state.timerTicksLeft - 1
+        },
+        () => {
+          this.forceUpdate();
+        }
+      );
     } else {
       this.props.onFinished();
     }
@@ -34,10 +38,14 @@ class Timer extends React.Component {
   }
 
   stop() {
-    this.setState(state => ({
-      isRunning: !state.isRunning,
-      timerTicksLeft: 0
-    }));
+    this.setState(
+      state => ({
+        timerTicksLeft: 0,
+        isRunning: !state.isRunning
+      }),
+      //ensures that view are updates after state change
+      () => this.forceUpdate()
+    );
   }
 
   render() {

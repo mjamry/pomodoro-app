@@ -17,7 +17,6 @@ class Clock extends React.Component {
   }
 
   componentWillUpdate(prevProsp) {
-    console.log("update");
     this.timerValue = this.formatClock(this.props.timerTicksLeft);
 
     if (this.props.isRunning !== prevProsp.isRunning) {
@@ -27,8 +26,6 @@ class Clock extends React.Component {
         this.startTimer();
       }
     }
-
-    console.log(`Running: ${this.props.isRunning}`);
   }
 
   startTimer() {
