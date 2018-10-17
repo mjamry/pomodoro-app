@@ -1,5 +1,6 @@
 const initialisationTime = Date.now();
 
+//returns a timestamp as a time elasped from the app initialization
 const _getTimestamp = () => {
   var timeFromAppInitialisation = new Date() - initialisationTime;
   var date = new Date(0, 0, 0, 0, 0, 0);
@@ -36,7 +37,7 @@ class ConsoleLog {
   }
 }
 
-//simple container for a specific logger class - for now it is enought
+//a simple container for a specific logger class - for now it is enought
 const Log = new ConsoleLog();
 
 export default Log;
