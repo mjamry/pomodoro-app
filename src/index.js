@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import Timer from "./components/Timer.js";
+import Log from "./common/Logger.js";
 
 const AppSettings = {
   appName: "Pomodoro App",
@@ -33,12 +34,15 @@ class App extends React.Component {
   }
 
   timerFinished = () => {
-    this.setState(state => ({
-      timerTime: state.isDuringTask
-        ? AppSettings.breakTime
-        : AppSettings.taskTime,
-      isDuringTask: !state.isDuringTask
-    }));
+    this.setState(
+      state => ({
+        timerTime: state.isDuringTask
+          ? AppSettings.breakTime
+          : AppSettings.taskTime,
+        isDuringTask: !state.isDuringTask
+      }),
+      Log.debug(this.state.isDuringTask ? "Task" : "Break")
+    );
   };
 
   render() {
