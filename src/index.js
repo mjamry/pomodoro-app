@@ -47,6 +47,10 @@ class App extends React.Component {
     );
   };
 
+  onNewTaskAdded(newTask) {
+    Log.debug(`Added new task: ${newTask}`);
+  }
+
   render() {
     return (
       <div>
@@ -56,7 +60,7 @@ class App extends React.Component {
           onFinished={this.timerFinished}
         />
         <hr />
-        <TaskAddForm />
+        <TaskAddForm onSubmitted={task => this.onNewTaskAdded(task)} />
         <TodoList />
       </div>
     );

@@ -11,8 +11,7 @@ class TaskAddForm extends React.Component {
 
   onSubmitted(e) {
     e.preventDefault();
-    console.log(this.state.taskName);
-    // this.props.onSubmitted();
+    this.props.onSubmitted(this.state.taskName);
     this.setState({ taskName: "" });
   }
 
