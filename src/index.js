@@ -65,7 +65,7 @@ class App extends React.Component {
         />
         <hr />
         <TaskAddForm onSubmitted={task => this.onNewTaskAdded(task)} />
-        <TodoList />
+        <TodoList tasks={this.state.taskList} />
       </div>
     );
   }

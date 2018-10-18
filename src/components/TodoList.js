@@ -5,9 +5,9 @@ class TodoList extends React.Component {
   render() {
     return (
       <div>
-        <Task name="todo1" />
-        <Task name="todo2" />
-        <Task name="todo3" />
+        {this.props.tasks.map(task => (
+          <Task name={task.name} />
+        ))}
       </div>
     );
   }
