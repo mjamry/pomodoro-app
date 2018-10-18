@@ -1,3 +1,11 @@
-const Task = () => {
-  return <div>Task</div>;
+import React from "react";
+
+const Task = props => {
+  return (
+    <div>
+      <p>{props.name}</p>
+    </div>
+  );
 };
+
+export default Task;

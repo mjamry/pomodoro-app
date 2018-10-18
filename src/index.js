@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 
 import Timer from "./components/Timer.js";
 import Log from "./common/Logger.js";
+import TaskAddForm from "./components/TaskAddForm.js";
+import TodoList from "./components/TodoList.js";
 
 const AppSettings = {
   appName: "Pomodoro App",
@@ -53,6 +55,9 @@ class App extends React.Component {
           timerIntervalInMinutes={this.state.timerTime}
           onFinished={this.timerFinished}
         />
+        <hr />
+        <TaskAddForm />
+        <TodoList />
       </div>
     );
   }
