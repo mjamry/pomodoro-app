@@ -26,19 +26,26 @@ class TaskAddForm extends React.Component {
     return (
       <div>
         <form onSubmit={e => this.onSubmitted(e)}>
-          <input
-            placeholder="Add new task"
-            type="text"
-            value={this.state.taskName}
-            onChange={e => this.onChange(e)}
-          />
-          <button
-            type="submit"
-            className="primary"
-            disabled={this.state.taskName === ""}
-          >
-            Add
-          </button>
+          <div className="form-row">
+            <div className="col-auto">
+              <input
+                className="form-control mb-2"
+                placeholder="Add new task"
+                type="text"
+                value={this.state.taskName}
+                onChange={e => this.onChange(e)}
+              />
+            </div>
+            <div className="col-auto">
+              <button
+                type="submit"
+                className="btn btn-primary mb-2"
+                disabled={this.state.taskName === ""}
+              >
+                Add
+              </button>
+            </div>
+          </div>
         </form>
       </div>
     );

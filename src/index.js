@@ -58,14 +58,21 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Header name={AppSettings.appName} />
-        <Timer
-          timerIntervalInMinutes={this.state.timerTime}
-          onFinished={this.timerFinished}
-        />
-        <hr />
-        <TaskAddForm onSubmitted={task => this.onNewTaskAdded(task)} />
-        <TodoList tasks={this.state.taskList} />
+        <div className="row">
+          <Header name={AppSettings.appName} />
+        </div>
+        <div className="row">
+          <div className="col">
+            <Timer
+              timerIntervalInMinutes={this.state.timerTime}
+              onFinished={this.timerFinished}
+            />
+          </div>
+          <div className="col">
+            <TaskAddForm onSubmitted={task => this.onNewTaskAdded(task)} />
+            <TodoList tasks={this.state.taskList} />
+          </div>
+        </div>
       </div>
     );
   }
