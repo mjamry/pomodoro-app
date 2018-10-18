@@ -32,7 +32,11 @@ class TaskAddForm extends React.Component {
             value={this.state.taskName}
             onChange={e => this.onChange(e)}
           />
-          <button type="submit" className="primary">
+          <button
+            type="submit"
+            className="primary"
+            disabled={this.state.taskName === ""}
+          >
             Add
           </button>
         </form>
