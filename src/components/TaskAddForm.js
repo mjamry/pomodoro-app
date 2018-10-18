@@ -11,7 +11,10 @@ class TaskAddForm extends React.Component {
 
   onSubmitted(e) {
     e.preventDefault();
-    this.props.onSubmitted(this.state.taskName);
+    this.props.onSubmitted({
+      name: this.state.taskName,
+      timestamp: Date.now()
+    });
     this.setState({ taskName: "" });
   }
 

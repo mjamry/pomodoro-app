@@ -31,7 +31,8 @@ class App extends React.Component {
 
     this.state = {
       isDuringTask: true,
-      timerTime: AppSettings.taskTime
+      timerTime: AppSettings.taskTime,
+      taskList: []
     };
   }
 
@@ -48,7 +49,10 @@ class App extends React.Component {
   };
 
   onNewTaskAdded(newTask) {
-    Log.debug(`Added new task: ${newTask}`);
+    Log.debug(`Added new task: ${newTask.name}`);
+    this.setState(prevState => ({
+      taskList: [...prevState.taskList, newTask]
+    }));
   }
 
   render() {
