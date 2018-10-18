@@ -1,24 +1,55 @@
 import React from "react";
 
-const NumberOfItems = 3;
+const NumberOfItemsOnPage = 3;
 
 class Pagination extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      currentPage: 0
+      currentFirstItem: 0
     };
   }
 
-  invalidateItems() {}
+  onPrevSelected() {
+    let current = this.state.currentFirstItem - NumberOfItemsOnPage;
+    if (current < 0) {
+      current = 0;
+    }
+    this.setState(
+      { currentFirstItem: current },
+      console.log(
+        `Prev | start: ${this.state.currentFirstItem} | current: ${current}`
+      )
+    );
+  }
+
+  onNextSelected() {
+    let current = this.state.currentFirstItem + NumberOfItemsOnPage;
+    if (current < this.props.items.length) {
+      this.setState(
+        { currentFirstItem: current },
+        console.log(
+          `Next | start: ${this.state.currentFirstItem} | current: ${current}`
+        )
+      );
+    }
+  }
+
+  getItems() {
+    let itemsOnPage = this.props.items.slice(
+      this.state.currentFirstItem,
+      this.state.currentFirstItem + NumberOfItemsOnPage
+    );
+    return itemsOnPage;
+  }
 
   render() {
     return (
       <div>
         <div className="row">
           <ul className="list-group">
-            {this.props.items.map(item => (
+            {this.getItems().map(item => (
               <li className="list-group-item">{item}</li>
             ))}
           </ul>
