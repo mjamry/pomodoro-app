@@ -11,17 +11,24 @@ class TaskAddForm extends React.Component {
 
   onSubmitted(e) {
     e.preventDefault();
-    this.props.onSubmitted();
+    console.log(this.state.taskName);
+    // this.props.onSubmitted();
+    this.setState({ taskName: "" });
+  }
+
+  onChange(e) {
+    this.setState({ taskName: e.target.value });
   }
 
   render() {
     return (
       <div>
-        <form onSubmit={this.onSubmitted}>
+        <form onSubmit={e => this.onSubmitted(e)}>
           <input
             placeholder="Add new task"
             type="text"
             value={this.state.taskName}
+            onChange={e => this.onChange(e)}
           />
           <button type="submit" className="primary">
             Add
