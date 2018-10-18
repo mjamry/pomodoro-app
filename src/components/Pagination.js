@@ -54,9 +54,30 @@ class Pagination extends React.Component {
             ))}
           </ul>
         </div>
-        <div className="row">
-          <button onClick={() => this.onPrevSelected()}>Prev</button>
-          <button onClick={() => this.onNextSelected()}>Next</button>
+        <div className="row pagination">
+          <div
+            className={
+              "page-item " +
+              (this.state.currentFirstItem === 0 ? "disabled" : "")
+            }
+          >
+            <button className="page-link" onClick={() => this.onPrevSelected()}>
+              Prev
+            </button>
+          </div>
+          <div
+            class={
+              "page-item " +
+              (this.state.currentFirstItem + NumberOfItemsOnPage >=
+              this.props.items.length
+                ? "disabled"
+                : "")
+            }
+          >
+            <button className="page-link" onClick={() => this.onNextSelected()}>
+              Next
+            </button>
+          </div>
         </div>
       </div>
     );
