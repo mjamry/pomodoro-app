@@ -32,7 +32,11 @@ class App extends React.Component {
     this.state = {
       isDuringTask: true,
       timerTime: AppSettings.taskTime,
-      taskList: []
+      taskList: [
+        { name: "task number one" },
+        { name: "task number two" },
+        { name: "task number three" }
+      ]
     };
   }
 

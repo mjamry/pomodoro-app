@@ -5,9 +5,13 @@ class TasksList extends React.Component {
   render() {
     return (
       <div>
-        {this.props.tasks.map(task => (
-          <Task name={task.name} />
-        ))}
+        <ul className="list-group">
+          {this.props.tasks.map(task => (
+            <li className="list-group-item task-item">
+              <Task name={task.name} />
+            </li>
+          ))}
+        </ul>
       </div>
     );
   }
