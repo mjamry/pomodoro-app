@@ -1,7 +1,7 @@
 import React from "react";
 
 import Task from "./Task.js";
-class TodoList extends React.Component {
+class TasksList extends React.Component {
   render() {
     return (
       <div>
@@ -13,4 +13,4 @@ class TodoList extends React.Component {
   }
 }
 
-export default TodoList;
+export default TasksList;

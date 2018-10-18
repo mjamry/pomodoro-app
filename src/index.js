@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 import Timer from "./components/Timer.js";
 import Log from "./common/Logger.js";
 import TaskAddForm from "./components/TaskAddForm.js";
-import TodoList from "./components/TodoList.js";
+import TasksList from "./components/TasksList.js";
 
 const AppSettings = {
   appName: "Pomodoro App",
@@ -57,7 +57,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="app-container">
         <div className="row">
           <Header name={AppSettings.appName} />
         </div>
@@ -70,7 +70,7 @@ class App extends React.Component {
           </div>
           <div className="col">
             <TaskAddForm onSubmitted={task => this.onNewTaskAdded(task)} />
-            <TodoList tasks={this.state.taskList} />
+            <TasksList tasks={this.state.taskList} />
           </div>
         </div>
       </div>
